@@ -61,6 +61,45 @@ config = {
         "EXTRA_PAYMENT_PROCESSOR_CLASSES": [],
         "EXTRA_PAYMENT_PROCESSOR_URLS": {},
     },
+    "defaults": {
+        "VERSION": __version__,
+        "API_TIMEOUT": 5,
+        "CURRENCY": "CAD",
+        "DOCKER_IMAGE": "{{ DOCKER_REGISTRY }}overhangio/openedx-ecommerce:{{ ECOMMERCE_VERSION }}",
+        "WORKER_DOCKER_IMAGE": "{{ DOCKER_REGISTRY }}overhangio/openedx-ecommerce-worker:{{ ECOMMERCE_VERSION }}",
+        "EXTRA_PIP_REQUIREMENTS": [],
+        "HOST": "ecommerce.{{ LMS_HOST }}",
+        "MYSQL_DATABASE": "ecommerce",
+        "MYSQL_USERNAME": "ecommerce",
+        "OAUTH2_KEY": "ecommerce",
+        "OAUTH2_KEY_DEV": "ecommerce-dev",
+        "OAUTH2_KEY_SSO": "ecommerce-sso",
+        "OAUTH2_KEY_SSO_DEV": "ecommerce-sso-dev",
+        "WORKER_JWT_ISSUER": "ecommerce-worker",  # TODO do we need to keep this?
+        # Micro frontend applications
+        "MFE_APP": {
+            "name": "orders",
+            "repository": "https://github.com/edulib/frontend-app-ecommerce",
+            "port": 1996,
+        },
+        "PAYMENT_MFE_APP": {
+            "name": "payment",
+            "repository": "https://github.com/edulib/frontend-app-payment",
+            "port": 1998,
+            "env": {
+                "production": {
+                    # Hardcoded in edx-platform
+                    "CURRENCY_COOKIE_NAME": "edx-price-l10n",
+                    # TODO set customizable value
+                    "CYBERSOURCE_URL": "https://testsecureacceptance.cybersource.com/silent/pay",
+                    "SUPPORT_URL": "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ LMS_HOST }}/support",
+                },
+                "development": {
+                    "SUPPORT_URL": "http://{{ LMS_HOST }}:8000/support",
+                },
+            },
+        },
+    },
 }
 
 
