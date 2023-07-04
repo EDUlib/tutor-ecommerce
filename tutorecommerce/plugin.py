@@ -55,7 +55,7 @@ config = {
         # Micro frontend applications
         "MFE_APP": {
             "name": "orders",
-            "repository": "https://github.com/edx/frontend-app-ecommerce",
+            "repository": "https://github.com/edulib/frontend-app-ecommerce",
             "port": 1996,
         },
         "PAYMENT_MFE_APP": {
