@@ -88,11 +88,11 @@ def _add_ecommerce_mfe_apps(apps: dict[str, MFE_ATTRS_TYPE]) -> dict[str, MFE_AT
     apps.update(
         {
             "orders": {
-                "repository": "https://github.com/edx/frontend-app-ecommerce",
+                "repository": "https://github.com/edulib/frontend-app-ecommerce",
                 "port": 1996,
             },
             "payment": {
-                "repository": "https://github.com/edx/frontend-app-payment",
+                "repository": "https://github.com/edulib/frontend-app-payment",
                 "port": 1998,
             },
         }
