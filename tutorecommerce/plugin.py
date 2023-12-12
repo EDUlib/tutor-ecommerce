@@ -111,7 +111,7 @@ def _add_ecommerce_mfe_apps(
         {
             "orders": {
                 "repository": "https://github.com/edulib/frontend-app-ecommerce",
-                "port": 1996,
+                "port": 7296,
             },
             "payment": {
                 "repository": "https://github.com/edulib/frontend-app-payment",
