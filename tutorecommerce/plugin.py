@@ -80,7 +80,7 @@ config = {
         "MFE_APP": {
             "name": "orders",
             "repository": "https://github.com/edulib/frontend-app-ecommerce",
-            "port": 1996,
+            "port": 7296,
         },
         "PAYMENT_MFE_APP": {
             "name": "payment",
